@@ -1,22 +1,25 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def prepare_data(ratings_path="data/ratings.csv", movies_path="data/movies.csv", test_size=0.2, random_state=42):
-    
-    ratings = pd.read_csv(ratings_path)
-    movies = pd.read_csv(movies_path)
-    
-    user_ids = ratings['userId'].unique()
-    movie_ids = ratings['movieId'].unique()
-    user2index = {uid: idx for idx, uid in enumerate(user_ids)}
-    movie2index = {mid: idx for idx, mid in enumerate(movie_ids)}
-    
-    ratings['userIndex'] = ratings['userId'].map(user2index)
-    ratings['movieIndex'] = ratings['movieId'].map(movie2index)
-    
-    train, test = train_test_split(ratings, test_size=test_size, random_state=random_state)
-    
-    num_users = len(user_ids)
-    num_movies = len(movie_ids)
-    
-    return train, test, movies, num_users, num_movies, user2index, movie2index
+def prepare_data():
+    # Load datasets
+    ratings = pd.read_csv("data/ratings.csv")   # userId, movieId, rating, timestamp
+    movies = pd.read_csv("data/movies.csv")     # movieId, title
+
+    # Encode users and movies as indices
+    user2idx = {uid: idx for idx, uid in enumerate(ratings['userId'].unique())}
+    movie2idx = {mid: idx for idx, mid in enumerate(ratings['movieId'].unique())}
+
+    ratings['userIndex'] = ratings['userId'].map(user2idx)
+    ratings['movieIndex'] = ratings['movieId'].map(movie2idx)
+
+    # Add movieIndex to movies DataFrame
+    movies['movieIndex'] = movies['movieId'].map(movie2idx)
+
+    # Train-test split
+    train_df, test_df = train_test_split(ratings, test_size=0.2, random_state=42)
+
+    num_users = ratings['userIndex'].nunique()
+    num_movies = ratings['movieIndex'].nunique()
+
+    return train_df, test_df, num_users, num_movies, movies
