@@ -41,6 +41,11 @@ User rates movies in Streamlit UI
 </p>
 
 ---
+<h2>🔄 Project Workflow</h2>
+
+<p align="center">
+  <img src="images/Project_Flow.png" width="650">
+</p>
 
 ## 📊 Dataset
 
