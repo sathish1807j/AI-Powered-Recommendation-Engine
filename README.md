@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# AI-Powered-Recommendation-Engine
-Recommend products, content, or courses based on user behavior.
-## 🏗️ System Architecture
-
-![System Architecture](images/architecture.png)
-=======
 
 ## 🎬 AI-Powered Movie Recommendation System
 
@@ -14,11 +7,6 @@ This project demonstrates practical application of machine learning, deep learni
 
 ---
 
-🚀 Demo
-
-🎥 Streamlit-based interactive UI
-Users select movies they have watched, rate them, and instantly receive AI-generated movie recommendations.
---
 ## 🚀 Features
 - Personalized movie recommendations
 - Collaborative filtering using Matrix Factorization
@@ -26,7 +14,6 @@ Users select movies they have watched, rate them, and instantly receive AI-gener
 - Cold-start handling for new users
 - Interactive Streamlit web interface
 - Real-time recommendations
-- Optional movie poster integration using TMDB API
 - Clean and modular project structure
 
 ---
@@ -48,6 +35,10 @@ User rates movies in Streamlit UI
 → Ratings sent to recommendation logic  
 → PyTorch model predicts unseen movie ratings  
 → Top-N recommended movies displayed to user  
+
+<p align="center">
+  <img src="images/architecture.png" width="600">
+</p>
 
 ---
 
@@ -83,10 +74,3 @@ Why MovieLens:
 - MovieLens
 
 ---
-## 📁 Project Structure
-
-
-
-
-
->>>>>>> a82c759144f1c1caa1358c69f2e5f73c1556a532
